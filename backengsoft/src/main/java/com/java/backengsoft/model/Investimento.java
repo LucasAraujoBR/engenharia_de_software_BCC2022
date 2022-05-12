@@ -7,16 +7,26 @@ import java.time.LocalDate;
 
 @Table(name = "investimento")
 @Entity
-public class Investimento {
+public class Investimento {//investimento seria melhor definilo como abstrato?
+	
+
     @Column
     private String nome;
     @Column
     private float valorIncial;
     @Column
-    private LocalDate dataInicias;
+    private LocalDate dataInicial;
     @Column
     private int tipoDeInvestimentos;
-
+    
+    /*Adicinei aqui visto que todo investimento possui prazo minimo e máximo com uma data de resgate*/
+    private LocalDate prazominimoResgate;
+    
+	private LocalDate prazomaximoResgate;
+	
+	private LocalDate DataResgate;
+	
+	
     public String getNome() {
         return nome;
     }
@@ -33,12 +43,12 @@ public class Investimento {
         this.valorIncial = valorIncial;
     }
 
-    public LocalDate getDataInicias() {
-        return dataInicias;
+    public LocalDate getdataInicial() {
+        return dataInicial;
     }
 
-    public void setDataInicias(LocalDate dataInicias) {
-        this.dataInicias = dataInicias;
+    public void setdataInicial(LocalDate dataInicial) {
+        this.dataInicial = dataInicial;
     }
 
     public int getTipoDeInvestimentos() {
@@ -48,4 +58,51 @@ public class Investimento {
     public void setTipoDeInvestimentos(int tipoDeInvestimentos) {
         this.tipoDeInvestimentos = tipoDeInvestimentos;
     }
+
+	public LocalDate getDataInicial() {
+		return dataInicial;
+	}
+
+	public void setDataInicial(LocalDate dataInicial) {
+		this.dataInicial = dataInicial;
+	}
+
+	public LocalDate getPrazominimoResgate() {
+		return prazominimoResgate;
+	}
+
+	public void setPrazominimoResgate(LocalDate prazominimoResgate) {
+		this.prazominimoResgate = prazominimoResgate;
+	}
+
+	public LocalDate getPrazomaximoResgate() {
+		return prazomaximoResgate;
+	}
+
+	public void setPrazomaximoResgate(LocalDate prazomaximoResgate) {
+		this.prazomaximoResgate = prazomaximoResgate;
+	}
+
+	public LocalDate getDataResgate() {
+		return DataResgate;
+	}
+
+	public void setDataResgate(LocalDate dataResgate) {
+		DataResgate = dataResgate;
+	}
+	
+	public void aplicarValor() {
+		
+	}
+	
+	public void gerarRelatorio() {
+		
+	}
+	
+	public void calcularMontanteDeResgate() {
+		
+	}
+	public void calcularRendimento() {
+		
+	}
 }

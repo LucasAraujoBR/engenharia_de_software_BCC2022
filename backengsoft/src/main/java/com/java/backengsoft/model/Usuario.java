@@ -8,7 +8,8 @@ import java.util.List;
 @Table(name= "usuario")
 @Entity
 public class Usuario {
-
+	
+	private int id;
     @Column
     private String nome;
     @Column
@@ -21,7 +22,15 @@ public class Usuario {
     private String valorTotalInvestido;
     // Tem que fazer uma tabela para investimentosList
     private List<Investimento> investimentoList;
-
+    
+    private Endereco endereco;
+    
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
     public String getNome() {
         return nome;
     }
@@ -69,6 +78,12 @@ public class Usuario {
     public void setInvestimentoList(List<Investimento> investimentoList) {
         this.investimentoList = investimentoList;
     }
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 }
 
 
