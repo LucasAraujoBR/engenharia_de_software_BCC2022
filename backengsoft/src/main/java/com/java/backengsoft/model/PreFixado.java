@@ -1,24 +1,22 @@
 package com.java.backengsoft.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 @Entity
-public class PreFixado extends Investimento {
+public class PreFixado extends Investimento implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
-	private int id;
-	private Double taxaRendabilidade;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	private Double taxaRentabilidade;
+	
+	
 	public Double getTaxaRendabilidade() {
-		return taxaRendabilidade;
+		return taxaRentabilidade;
 	}
-	public void setTaxaRendabilidade(Double taxaRendabilidade) {
-		this.taxaRendabilidade = taxaRendabilidade;
+	public void setTaxaRendabilidade(Double taxaRentabilidade) {
+		this.taxaRentabilidade = taxaRentabilidade;
 	}
 	
 }

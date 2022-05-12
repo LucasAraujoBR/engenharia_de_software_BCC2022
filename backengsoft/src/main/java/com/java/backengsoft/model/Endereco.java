@@ -1,16 +1,31 @@
 package com.java.backengsoft.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Endereco {
-	private int id;
+public class Endereco implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	private String rua;
 	private int numero;
 	private int CEP;
 	private String referencia;
 	private String Cidade;
 	
+	@JsonIgnore
+    @OneToOne
+	private Usuario usuario;
 	
 	public Endereco(String rua, int numero, int CEP, String referencia, String cidade) {
 		super();

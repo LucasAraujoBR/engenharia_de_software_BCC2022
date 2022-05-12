@@ -1,20 +1,18 @@
 package com.java.backengsoft.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
+
 @Entity
-public class PosFixado extends Investimento{
-	
-	private int id;
+public class PosFixado extends Investimento implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private String indiceAtrelado;
 	private Double taxaMensal;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getIndiceAtrelado() {
 		return indiceAtrelado;
 	}
