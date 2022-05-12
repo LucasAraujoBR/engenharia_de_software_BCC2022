@@ -1,4 +1,4 @@
-package com.java.backengsoft.model;
+package com.java.backengsoft.entities;
 
 import java.io.Serializable;
 
@@ -21,6 +21,18 @@ public class InformeRendimento implements Serializable {
 	
 	private Double tributacao;
 	
+	public InformeRendimento() {
+		
+	}
+	
+	public InformeRendimento(Usuario usuario,Investimento investimento, String optionalMessage, String nomeTributacao, Double tributacao) {
+		id.setUsuario(usuario);
+		id.setInvestimento(investimento);
+		this.optionalMessage = optionalMessage;
+		this.nomeTributacao = nomeTributacao;
+		this.tributacao = tributacao;
+	}
+
 	public Investimento getInvestimento() {
 		return id.getInvestimento();
 	}
@@ -32,7 +44,7 @@ public class InformeRendimento implements Serializable {
 		return id.getUsuario();
 	}
 	public void setUsuario(Usuario usuario) {
-		id.setUsuario(usuario);
+		
 	}
 	public String getOptionalMessage() {
 		return optionalMessage;

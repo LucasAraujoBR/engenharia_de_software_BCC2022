@@ -1,4 +1,4 @@
-package com.java.backengsoft.model;
+package com.java.backengsoft.entities;
 
 
 import javax.persistence.Entity;
@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class Investimento 	implements Serializable {//investimento seria melhor definilo como abstrato?
+public class Investimento implements Serializable {
 		private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,9 +48,29 @@ public class Investimento 	implements Serializable {//investimento seria melhor 
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "id.investimento")
 	private Set<InformeRendimento> informesRendimento = new HashSet<>();
 	
+	
+	public Investimento(String nome, float valorIncial, LocalDate dataInicial, int tipoInvestimento,
+			LocalDate prazominimoResgate, LocalDate prazomaximoResgate, LocalDate dataResgate, String rentabilidade,
+			Usuario usuario) {
+		super();
+		this.nome = nome;
+		this.valorIncial = valorIncial;
+		this.dataInicial = dataInicial;
+		this.tipoInvestimento = tipoInvestimento;
+		this.prazominimoResgate = prazominimoResgate;
+		this.prazomaximoResgate = prazomaximoResgate;
+		this.dataResgate = dataResgate;
+		this.rentabilidade = rentabilidade;
+		this.usuario = usuario;
+	}
+
+	public Investimento() {
+
+	}
 
 	public String getNome() {
         return nome;
@@ -83,14 +103,6 @@ public class Investimento 	implements Serializable {//investimento seria melhor 
     public void setTipoDeInvestimentos(int tipoInvestimento) {
         this.tipoInvestimento = tipoInvestimento;
     }
-
-	public LocalDate getDataInicial() {
-		return dataInicial;
-	}
-
-	public void setDataInicial(LocalDate dataInicial) {
-		this.dataInicial = dataInicial;
-	}
 
 	public LocalDate getPrazominimoResgate() {
 		return prazominimoResgate;

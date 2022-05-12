@@ -1,4 +1,4 @@
-package com.java.backengsoft.model;
+package com.java.backengsoft.entities;
 
 import java.io.Serializable;
 import java.util.Objects;

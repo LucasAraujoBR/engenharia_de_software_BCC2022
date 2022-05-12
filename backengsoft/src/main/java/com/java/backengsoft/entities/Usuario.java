@@ -1,4 +1,4 @@
-package com.java.backengsoft.model;
+package com.java.backengsoft.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,7 +20,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
     private String nome;
     
@@ -34,7 +35,7 @@ public class Usuario implements Serializable {
     private Double valorTotalInvestido;
         
     @OneToMany(mappedBy="usuario")
-    private List<Investimento> investimentos;
+    private List<Investimento> investimentos = new ArrayList<>();
     
     @OneToOne
     private Endereco endereco;
@@ -43,22 +44,22 @@ public class Usuario implements Serializable {
 	private Set<InformeRendimento> informesRendimento = new HashSet<>();
    
 
-	public Usuario(int id, String nome, String cpf, String numeroDeTelefone, String email, Double valorTotalInvestido,
-			List<Investimento> investimentos, Endereco endereco) {
-		this.id = id;
+	public Usuario(String nome, String cpf, String numeroDeTelefone, String email, Endereco endereco) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.numeroDeTelefone = numeroDeTelefone;
 		this.email = email;
-		this.valorTotalInvestido = valorTotalInvestido;
-		this.investimentos = investimentos;
 		this.endereco = endereco;
 	}
 	
-	public int getId() {
+	public Usuario() {
+	
+	}
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
     public String getNome() {
@@ -113,6 +114,9 @@ public class Usuario implements Serializable {
 
 	public List<Investimento> getInvestimentos() {
 		return investimentos;
+	}
+	public void addInvestimento(Investimento investimento) {
+		this.investimentos.add(investimento);
 	}
 
 	public boolean removerInvestimento(Investimento investimento) {
